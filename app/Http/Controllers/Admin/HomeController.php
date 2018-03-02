@@ -30,10 +30,8 @@ class HomeController extends Controller
 
 		if (Auth::check()) {
 
-			//获取通知消息
 			$user=Auth::user();
-			//$notifications = $user->notifications()->get()->take(3)->toArray();
-
+			
 			//获取上次登录时间
             $rs=Log::getLastLoginTime($user->name);
            
