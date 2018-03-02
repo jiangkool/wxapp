@@ -1,6 +1,6 @@
 <p align="center">
   <br>
-  <b>Laravel for miniapp</b>
+  <b>#Laravel for miniapp</b>
   <br>
 </p>
 
@@ -10,9 +10,9 @@
 
 This web application depends on those packages:
 
-1、"laravel/framework": "5.4.*"
-2、"germey/geetest": "~3.0",
-3、"tymon/jwt-auth": "1.0.*@dev"
+1、"laravel/framework": "5.4.*"<br>
+2、"germey/geetest": "~3.0"<br>
+3、"tymon/jwt-auth": "1.0.*@dev"<br>
 4、"dingo/api": "1.0.*@dev"
 
 
