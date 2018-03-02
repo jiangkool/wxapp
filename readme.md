@@ -1,9 +1,4 @@
-<p align="center">
-  <br>
-  #<b>Laravel for miniapp</b>
-  <br>
-</p>
-
+# Wxapp
 
 
 ## Intro
