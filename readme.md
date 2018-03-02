@@ -1,6 +1,6 @@
 <p align="center">
   <br>
-  <b>#Laravel for miniapp</b>
+  #<b>Laravel for miniapp</b>
   <br>
 </p>
 
