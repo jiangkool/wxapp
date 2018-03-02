@@ -15,13 +15,33 @@ use App\Models\User;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new AuthController instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('jtoken', ['except' => ['signIn','signUp']]);
+    }
+
+    /**
+     * Display user list.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+      
+
+    }
+
+    /**
+     * Display current user info.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function me()
+    {
+        return response()->json(auth()->user());
+
     }
 
     /**
@@ -35,7 +55,17 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created user.
+     * Store a newly resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(RegisterRequest $request)
+    {
+       
+    }
+
+    /**
+     * Sign up.
      *
      * @param str  $email
      * @param str $password 
@@ -43,16 +73,23 @@ class UserController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterRequest $request)
+    public function signUp(RegisterRequest $request)
     {
         if (User::create(['name'=>$request->name,'email'=>$request->email,'password'=>bcrypt($request->password),'active'=>1,'isadmin'=>0])) {
             return 'Register ok!!';
         }
-        return response()->withErrors('Register Fail!');
+        return response()->json(['error' => 'Register Fail!'], 200);
     }
 
-
-    public function login(Request $request)
+    /**
+     * User sign in.
+     * 
+     * @param str $email
+     * @param str $password
+     *    
+     * @return json token
+     */
+    public function signIn(Request $request)
     {
         $userData=$request->only(['email','password']);
         $rules=[
@@ -66,10 +103,12 @@ class UserController extends Controller
             throw new ValidationHttpException($validator->errors()->all());
         }
 
-         if (!$user=Auth::attempt(['email'=>$request->email,'password'=>$request->password,'active'=>1])) {
+         if (!Auth::attempt(['email'=>$request->email,'password'=>$request->password,'active'=>1])) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+        $user=User::where('email',$request->email)->first();
         $token = JWTAuth::fromUser($user);
+
         return response()->json(compact('token'));
     }
 
