@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 
 class JtokenMiddleware
 {
@@ -22,10 +23,7 @@ class JtokenMiddleware
         {
             if (! $user = JWTAuth::parseToken()->authenticate() )
             {
-                 return response()->json([
-                   'code'   => 101,
-                   'response' => null
-                 ]);
+                 throw new \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException('Unauthorized');
             }
         }
         catch (TokenExpiredException $e)
@@ -39,21 +37,15 @@ class JtokenMiddleware
             }
             catch (JWTException $e)
             {
-                 return response()->json([
-                   'code'   => 103,
-                   'response' => null 
-                 ]);
+                 throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException('JWT refreshed failed');
             }
         }
         catch (JWTException $e)
         {
-            return response()->json([
-                   'code'   => 101,
-                   'response' => null
-            ]);
+            throw new \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException('Unauthorized');
         }
 
-        // Login the user instance for global usage
+        // Log a user into the application.
         Auth::login($user, false);
 
         return  $next($request);
