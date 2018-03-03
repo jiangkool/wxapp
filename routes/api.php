@@ -1,7 +1,5 @@
 <?php
 
-//use Illuminate\Http\Request;
-
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
@@ -12,5 +10,5 @@ $api->version('v1', [
 
 		$api->post('login',['uses'=>'UserController@signIn','as'=>'api.user_login']);
 
-		$api->get('user',['uses'=>'UserController@me','as'=>'api.user_info']);
+		$api->get('me',['uses'=>'UserController@me','as'=>'api.user_info']);
 });
