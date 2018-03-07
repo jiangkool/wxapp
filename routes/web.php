@@ -57,3 +57,21 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 
 
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes For Wechat
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your Wechat application. 
+|
+*/
+
+Route::group(['prefix' => 'wechat','middleware'=>['web', 'wechat.oauth'],'namespace'=>'Wechat'], function() {
+    
+	Route::get('/miniapp/{code}','WechatController@guest');
+
+	Route::post('/miniapp','WechatController@getUserInfo');
+
+});

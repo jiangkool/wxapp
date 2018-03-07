@@ -59,6 +59,8 @@ class Kernel extends HttpKernel
         'isAdmin' => \App\Http\Middleware\AdminMiddleware::class,
         'jtoken' => \App\Http\Middleware\JtokenMiddleware::class,
         'jwt.auth' => Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-        'jwt.refresh' => Tymon\JWTAuth\Middleware\RefreshToken::class
+        'jwt.refresh' => Tymon\JWTAuth\Middleware\RefreshToken::class,
+        //Laravel Wechat Middleware
+        'wechat.oauth' => \Overtrue\LaravelWechat\Middleware\OAuthAuthenticate::class
     ];
 }
