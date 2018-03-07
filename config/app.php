@@ -191,7 +191,12 @@ return [
         /**
          * Dingo Api providers
          */
-        Dingo\Api\Provider\LaravelServiceProvider::class
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+
+        /**
+         * LaravelWechat Providers
+         */
+        Overtrue\LaravelWechat\ServiceProvider::class
 
     ],
 
@@ -241,9 +246,13 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        /**
+         * Add new Facades
+         */
         'Geetest' => Germey\Geetest\Geetest::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'EasyWeChat' => Overtrue\LaravelWechat\Facade::class
 
     ],
 
