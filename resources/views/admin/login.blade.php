@@ -11,22 +11,7 @@
   <link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
   <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
   <style>
-    .header {
-      text-align: center;
-    }
-    .header h1 {
-      font-size: 2.4rem;
-      color: #FFF;
-      padding: 50px 0;
-      letter-spacing: 2px
-    }
-    .header p {
-      font-size: 14px;
-      
-    }
-    .canvas-wrap h3{margin-top: 20px}
-    #canvas{width:100%;height:100%;overflow:hidden;position:absolute;top:0;left:0;background-color:#009688}.canvas-content,.canvas-wrap{position:relative}.canvas-content{z-index:9;height:100%;}#particles-js{width:100%;height:100%;background-color:#009688;position:absolute;right:0;top:0}.index-content .indms1{border-right:1px solid #f9f9f9;padding:5pc 75pt 5pc 50px}.index-content .indms2{border-left:1px solid #f9f9f9;padding:5pc 50px 5pc 75pt}.index-content .center{float:left;width:20%}.index-content .line{width:3px;margin:0 auto;background:#f9f9f9;height:50pc}.index-content h2{font-size:18px;margin-bottom:20px}.index-content h2,.index-content h3{font-weight:100;color:#555;line-height:30px}.index-content h3{font-size:1pc;margin-bottom:30px}.index-content span{font-size:1pc;font-weight:100;color:#555;line-height:36px}.index-content span i{font-size:18px;color:#999;margin-right:9pt;position:relative;top:1px}.index-content p{font-size:14px;font-weight:100;color:#999;line-height:30px;margin-bottom:30px}.index-content .layui-btn{padding:0 28px}body{background:#fff}.cl{zoom:1}.cl:after{content:'\20';display:block;height:0;clear:both;visibility:hidden}.z{float:left}.y{float:right}.tpt-mab-40{margin-bottom:40px}.tpt-pat-75{padding-top:75px}.tpt-pab-75{padding-bottom:75px}.tpt-pat-20{padding-top:30px}.tpt-pab-20{padding-bottom:30px}.tpt-mat-30{margin-top:30px}@media only screen and (max-width:767px){.index-banner h2{font-size:30px;padding-top:90pt}.index-banner h3{font-size:14px;margin-top:20px;line-height:25px;padding:0 10px}.index-banner{height:25pc}.index-banner h4 a{padding:0 30px 0 40px;height:50px;line-height:46px}.index-content .indms1{border-bottom:1px solid #e8e8e8}.index-content .indms1,.index-content .indms2{border-right:0 solid #f9f9f9;padding:30px 10px 40px}#particles-js{height:25pc}.index-hda{height:20pc}.canvas-content{height:25pc}.index-content .layui-btn{padding:0 18px}}
-  </style>
+    .header {text-align: center; } .header h1 {font-size: 2.4rem; color: #FFF; padding: 50px 0; letter-spacing: 2px } .header p {font-size: 14px; } .canvas-wrap h3{margin-top: 20px} #canvas{width:100%;height:100%;overflow:hidden;position:absolute;top:0;left:0;background-color:#009688}.canvas-content,.canvas-wrap{position:relative}.canvas-content{z-index:9;height:100%;}#particles-js{width:100%;height:100%;background-color:#009688;position:absolute;right:0;top:0}.index-content .indms1{border-right:1px solid #f9f9f9;padding:5pc 75pt 5pc 50px}.index-content .indms2{border-left:1px solid #f9f9f9;padding:5pc 50px 5pc 75pt}.index-content .center{float:left;width:20%}.index-content .line{width:3px;margin:0 auto;background:#f9f9f9;height:50pc}.index-content h2{font-size:18px;margin-bottom:20px}.index-content h2,.index-content h3{font-weight:100;color:#555;line-height:30px}.index-content h3{font-size:1pc;margin-bottom:30px}.index-content span{font-size:1pc;font-weight:100;color:#555;line-height:36px}.index-content span i{font-size:18px;color:#999;margin-right:9pt;position:relative;top:1px}.index-content p{font-size:14px;font-weight:100;color:#999;line-height:30px;margin-bottom:30px}.index-content .layui-btn{padding:0 28px}body{background:#fff}.cl{zoom:1}.cl:after{content:'\20';display:block;height:0;clear:both;visibility:hidden}.z{float:left}.y{float:right}.tpt-mab-40{margin-bottom:40px}.tpt-pat-75{padding-top:75px}.tpt-pab-75{padding-bottom:75px}.tpt-pat-20{padding-top:30px}.tpt-pab-20{padding-bottom:30px}.tpt-mat-30{margin-top:30px}@media only screen and (max-width:767px){.index-banner h2{font-size:30px;padding-top:90pt}.index-banner h3{font-size:14px;margin-top:20px;line-height:25px;padding:0 10px}.index-banner{height:25pc}.index-banner h4 a{padding:0 30px 0 40px;height:50px;line-height:46px}.index-content .indms1{border-bottom:1px solid #e8e8e8}.index-content .indms1,.index-content .indms2{border-right:0 solid #f9f9f9;padding:30px 10px 40px}#particles-js{height:25pc}.index-hda{height:20pc}.canvas-content{height:25pc}.index-content .layui-btn{padding:0 18px}} </style>
 </head>
 <body>
 <section class="canvas-wrap">

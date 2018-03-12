@@ -75,3 +75,4 @@ Route::group(['prefix' => 'wechat','middleware'=>['web', 'wechat.oauth'],'namesp
 	Route::post('/miniapp','WechatController@getUserInfo');
 
 });
+

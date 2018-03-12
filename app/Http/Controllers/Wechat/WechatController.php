@@ -35,7 +35,6 @@ class WechatController extends Controller
 
       Cache::has('session_key') && Cache::forget('session_key');
       Cache::add('session_key', $data->session_key, 7000);
-
       return response()->json($data);
 
     }
@@ -53,7 +52,9 @@ class WechatController extends Controller
         $session_key=Cache::get('session_key');
 
         $data=$this->app->encryptor->decryptData($session_key,$iv,$encryptedData);
-
+        
         return response()->json($data);
     }
+
+
 }

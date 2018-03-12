@@ -82,11 +82,11 @@ class HomeController extends Controller
 	}
 
 	//login out
-
 	public function loginOut()
 	{
 		Auth::logout();
 		Session::flush();
+		
 		return Redirect::route('login')->withErrors('您已经退出登录!');
 	}
 
