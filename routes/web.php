@@ -55,6 +55,12 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 	Route::resource('permission','PermissionController');
 	Route::get('permission/{permission}/delete',['as'=>'permission.delete','uses'=>'PermissionController@destroy']);
 
+	//Wechat Accounts routes
+	Route::resource('account','AccountController');
+
+	Route::get('account/{id}/active',['as'=>'account.active','uses'=>'AccountController@active']);
+	Route::get('account/{id}/delete',['as'=>'account.delete','uses'=>'AccountController@destroy']);
+
 
 });
 
@@ -68,11 +74,14 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 |
 */
 
-Route::group(['prefix' => 'wechat','middleware'=>['web', 'wechat.oauth'],'namespace'=>'Wechat'], function() {
+Route::group(['prefix' => 'wechat','middleware'=>['web'],'namespace'=>'Wechat'], function() {
     
-	Route::get('/miniapp/{code}','WechatController@guest');
+	Route::get('/miniapp/{code}','MiniappController@guest');
 
-	Route::post('/miniapp','WechatController@getUserInfo');
+	Route::post('/miniapp','MiniappController@getUserInfo');
+
+	//Wechat callback url
+	Route::any('callback/{id}','WechatController@callBack');
 
 });
 

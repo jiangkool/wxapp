@@ -4,57 +4,79 @@ namespace App\Http\Controllers\Wechat;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Config;
-use Cache;
 use EasyWeChat\Foundation\Application;
+use Account;
 
 class WechatController extends Controller
 {
-    private $app; 
+   
 
-    public function __construct(){
-
-      $options = ['mini_program' => Config::get('wechat.mini_program')];
-
-      $app = new Application($options);
-
-      $this->app = $app->mini_program;
-
-    }
-
-    /**
-     * Code to SessionKey & openid.
-     * 
-     * @param  str $code 
-     * @return json $data
-     */
-    public function guest($code)
+	/**
+	 * Wechat callback function.
+	 * 
+	 * @param  Request $request
+	 * @param  int  $id
+	 * @return \EasyWeChat\Support\Collection
+	 */
+   public function callBack(Request $request,$id)
     {
 
-      $data=$this->app->sns->getSessionKey($code);
+      $token=$request->token;
+      $id=intval($id);
+      $account=Account::where('id',$id)->where('wechat_token',$token)->where('status',1)->first();
+      $options = [
+		    'debug'  => true,
+		    'app_id' => $account->app_id,
+		    'secret' => $account->app_secret,
+		    'token'  => $account->wechat_token,
+		    'aes_key'=>	$account->encoding_aes_key,
+		    'log' => [
+		        'level' => 'debug',
+		        'file'  => '/tmp/wechat.log', 
+		    ],
+		];
 
-      Cache::has('session_key') && Cache::forget('session_key');
-      Cache::add('session_key', $data->session_key, 7000);
-      return response()->json($data);
+		$app = new Application($options);
+		$server = $app->server;
+		$server->setMessageHandler(function ($message) {
+		    switch ($message->MsgType) {
+		        case 'event':
+		            return '收到事件消息';
+		            break;
+		        case 'text':
+		            return '收到文字消息';
+		            break;
+		        case 'image':
+		            return '收到图片消息';
+		            break;
+		        case 'voice':
+		            return '收到语音消息';
+		            break;
+		        case 'video':
+		            return '收到视频消息';
+		            break;
+		        case 'location':
+		            return '收到坐标消息';
+		            break;
+		        case 'link':
+		            return '收到链接消息';
+		            break;
+		        // ... 其它消息
+		        default:
+		            return '收到其它消息';
+		            break;
+		    }
 
+		    // ...
+		});
+
+		$response = $server->serve();
+
+
+		return $response;
     }
 
-    /**
-     * Decrypt user info by encryptData.
-     * 
-     * @param  str $encryptData
-     * @return json $data
-     */
-    public function getUserInfo(Request $request)
-    {
-        $encryptedData=$request->encryptedData;
-        $iv=$request->iv;
-        $session_key=Cache::get('session_key');
-
-        $data=$this->app->encryptor->decryptData($session_key,$iv,$encryptedData);
-        
-        return response()->json($data);
-    }
+    
 
 
 }

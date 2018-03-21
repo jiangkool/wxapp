@@ -4,6 +4,16 @@
     <div class="am-offcanvas-bar admin-offcanvas-bar">
       <ul class="am-list admin-sidebar-list">
         <li><a href="{{ route('login')}}"><span class="am-icon-home"></span> 系统首页</a></li>
+        <li class="admin-parent">
+        <a class="am-cf" data-am-collapse="{target: '#collapse-gzh'}"><span class="am-icon-cog"></span> 公众号管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+        <ul class="am-list am-collapse admin-sidebar-sub
+        @if(request()->is('admin/account/*'))
+          am-in on
+        @endif" id="collapse-gzh">
+            <li><a href="{{route('account.index')}}" ><span class="am-icon-cogs"></span> 公众号列表</a></li>
+            <li><a href="{{route('account.create')}}" ><span class="am-icon-cogs"></span> 添加公众号</a></li>
+        </ul>
+        </li>
         @if(array_key_exists('users.index',Session::get('admin_permissions')) || array_key_exists('roles.index',Session::get('admin_permissions')) || array_key_exists('permission.index',Session::get('admin_permissions')) || Auth::user()->id==1)
         <li class="admin-parent">
           <a class="am-cf" data-am-collapse="{target: '#collapse-qx'}"><span class="am-icon-users"></span> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
