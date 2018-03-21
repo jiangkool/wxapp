@@ -5,19 +5,25 @@ namespace App\Http\Controllers\Wechat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use EasyWeChat\Foundation\Application;
+use EasyWeChat\Message\Text;
+use EasyWeChat\Message\Image;
+use EasyWeChat\Message\Video;
+use EasyWeChat\Message\Voice;
+use EasyWeChat\Message\News;
+use EasyWeChat\Message\Article;
 use Account;
 
 class WechatController extends Controller
 {
    
 
-	/**
-	 * Wechat callback function.
-	 * 
-	 * @param  Request $request
-	 * @param  int  $id
-	 * @return \EasyWeChat\Support\Collection
-	 */
+  /**
+   * Wechat callback function.
+   * 
+   * @param  Request $request
+   * @param  int  $id
+   * @return \EasyWeChat\Support\Collection
+   */
    public function callBack(Request $request,$id)
     {
 
@@ -38,10 +44,10 @@ class WechatController extends Controller
 
 		$app = new Application($options);
 		$server = $app->server;
-		$server->setMessageHandler(function ($message) {
+		$server->setMessageHandler(function ($message,$id) {
 		    switch ($message->MsgType) {
 		        case 'event':
-		            return '收到事件消息';
+		            return $this->eventHandler($message,$id);
 		            break;
 		        case 'text':
 		            return '收到文字消息';
@@ -76,7 +82,29 @@ class WechatController extends Controller
 		return $response;
     }
 
-    
+    /**
+     * Event Handler.
+     * 
+     * @param  obj $message Event [e.g.：subscribe,unsubscribe,CLICK ]
+     * @param  int $id app_id
+     * @return \EasyWeChat\Support\Collection
+     */
+    private function eventHandler($message,$id)
+    {
+    	$account=Account::where('id',$id)->where('status',1)->first();
+
+    	switch ($message->event) {
+    			case 'subscribe':
+    				return 'Subscribe success!!';
+    				break;
+    			case 'unsubscribe':
+    				return 'Unsubscribe success!!';
+    				break;
+    			default:
+    				// code...
+    				break;
+    		}	
+    }
 
 
 }
