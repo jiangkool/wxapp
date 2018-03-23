@@ -15,7 +15,32 @@ use Account;
 
 class WechatController extends Controller
 {
-   
+	private $app,$account;
+   	
+   	/**
+   	 * Init app & account class.
+   	 * 
+   	 * @param string $token
+   	 * @param int $id 
+   	 */
+   	public function __construct($token,$id)
+   	{
+   	  $token=$request->token;
+      $id=intval($id);
+      $account=Account::where('id',$id)->where('wechat_token',$token)->where('status',1)->first();
+      $options = [
+		    'debug'  => true,
+		    'app_id' => $account->app_id,
+		    'secret' => $account->app_secret,
+		    'token'  => $account->wechat_token,
+		    'aes_key'=>	$account->encoding_aes_key
+		];
+
+		$this->app = new Application($options);
+		$this->account = $account;
+
+   	}
+
 
   /**
    * Wechat callback function.
@@ -27,23 +52,12 @@ class WechatController extends Controller
    public function callBack(Request $request,$id)
     {
 
-      $token=$request->token;
-      $id=intval($id);
-      $account=Account::where('id',$id)->where('wechat_token',$token)->where('status',1)->first();
-      $options = [
-		    'debug'  => true,
-		    'app_id' => $account->app_id,
-		    'secret' => $account->app_secret,
-		    'token'  => $account->wechat_token,
-		    'aes_key'=>	$account->encoding_aes_key
-		];
-
-		$app = new Application($options);
-		$server = $app->server;
-		$server->setMessageHandler(function ($message,$id) {
+     
+		$server = $this->app->server;
+		$server->setMessageHandler(function ($message) {
 		    switch ($message->MsgType) {
 		        case 'event':
-		            return $this->eventHandler($message,$id);
+		            return $this->eventHandler($message);
 		            break;
 		        case 'text':
 		            return '收到文字消息';
@@ -85,9 +99,8 @@ class WechatController extends Controller
      * @param  int $id app_id
      * @return \EasyWeChat\Support\Collection
      */
-    private function eventHandler($message,$id)
+    private function eventHandler($message)
     {
-    	$account=Account::where('id',$id)->where('status',1)->first();
 
     	switch ($message->event) {
     			case 'subscribe':
