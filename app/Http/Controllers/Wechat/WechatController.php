@@ -35,11 +35,7 @@ class WechatController extends Controller
 		    'app_id' => $account->app_id,
 		    'secret' => $account->app_secret,
 		    'token'  => $account->wechat_token,
-		    'aes_key'=>	$account->encoding_aes_key,
-		    'log' => [
-		        'level' => 'debug',
-		        'file'  => '/tmp/wechat.log', 
-		    ],
+		    'aes_key'=>	$account->encoding_aes_key
 		];
 
 		$app = new Application($options);
@@ -105,6 +101,8 @@ class WechatController extends Controller
     				break;
     		}	
     }
+
+    
 
 
 }

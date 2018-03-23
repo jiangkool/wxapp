@@ -86,6 +86,7 @@ class AccountController extends Controller
 
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -158,6 +159,7 @@ class AccountController extends Controller
         }
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -177,8 +179,10 @@ class AccountController extends Controller
         }
     }
 
+
     /**
-     * Change account status
+     * Change account status.
+     * 
      * @param  int $id
      * @return bool
      */

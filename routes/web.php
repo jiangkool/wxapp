@@ -61,6 +61,9 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 	Route::get('account/{id}/active',['as'=>'account.active','uses'=>'AccountController@active']);
 	Route::get('account/{id}/delete',['as'=>'account.delete','uses'=>'AccountController@destroy']);
 
+	//wechat menu
+	Route::get('menu/{id}',['as'=>'menu.index','uses'=>'MenuController@index']);
+
 
 });
 
