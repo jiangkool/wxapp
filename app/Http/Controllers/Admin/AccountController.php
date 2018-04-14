@@ -10,12 +10,9 @@ use App\Models\Account;
 class AccountController extends Controller
 {   
 
-    /**
-     * Defined middleware auth. 
-     */
     public function __construct()
     {
-        $this->middleware(['auth']);
+        $this->middleware(['auth','isAdmin']);
     }
 
     /**

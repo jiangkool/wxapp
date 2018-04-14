@@ -62,8 +62,24 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 	Route::get('account/{id}/delete',['as'=>'account.delete','uses'=>'AccountController@destroy']);
 
 	//wechat menu
-	Route::get('menu/{id}',['as'=>'menu.index','uses'=>'MenuController@index']);
+	//Route::get('menu/{id}',['as'=>'menu.index','uses'=>'MenuController@index']);
 
+	//Customer route register
+	Route::get('customer',['as'=>'customer.index','uses'=>'CustomerController@index']);
+
+	Route::resource('category','CategoryController');
+	Route::get('category/{category}/delete',['as'=>'category.delete','uses'=>'CategoryController@destroy']);
+
+	Route::resource('article','ArticleController');
+	Route::get('article/{article}/delete',['as'=>'article.delete','uses'=>'ArticleController@destroy']);
+	Route::get('article/{id}/active',['as'=>'article.active','uses'=>'ArticleController@active']);
+
+	Route::get('yygh',['as'=>'yygh.index','uses'=>'YyghController@index']);
+	Route::get('yygh/{id}/active',['as'=>'yygh.active','uses'=>'YyghController@active']);
+	Route::get('yygh/{id}/delete',['as'=>'yygh.delete','uses'=>'YyghController@destroy']);
+
+	//upload files
+	Route::post('/upload/post','UploadController@uploadFiles')->name('uploadfile');
 
 });
 
@@ -82,6 +98,16 @@ Route::group(['prefix' => 'wechat','middleware'=>['web'],'namespace'=>'Wechat'],
 	Route::get('/miniapp/{code}','MiniappController@guest');
 
 	Route::post('/miniapp','MiniappController@getUserInfo');
+
+	Route::get('/category','MiniappController@dataList');
+
+	Route::get('/search','MiniappController@search');
+
+	Route::get('/getXm','MiniappController@getXmInfo');
+
+	Route::get('/yygh','MiniappController@yygh');
+
+	Route::get('/getContent','MiniappController@getContent');
 
 	//Wechat callback url
 	Route::any('callback/{id}','WechatController@callBack');

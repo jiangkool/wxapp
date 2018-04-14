@@ -12,7 +12,7 @@ class MenuController extends Controller
 	private $menu;
 	private $server;
 
-	public function __construct($id)
+	public function __construct(Request $request)
 	{
 		$account=Account::where('id',$id)->where('status',1)->first();
 

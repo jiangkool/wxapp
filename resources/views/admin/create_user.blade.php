@@ -1,19 +1,18 @@
-@extends('layouts.admin')
-
+@extends('admin.admin')
 @section('title','增加管理员')
-
+@section('dataType','generalComponents')
 @section('content')
-<div class="admin-content-body">
-      <div class="am-cf am-padding am-padding-bottom-0">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">增加管理员</strong> / <small></small></div>
-      </div>
-
-      <hr/>
-
-      <div class="am-g">
-       @include('layouts.message')
-        <div class="am-u-sm-12 am-u-md-8">
-          <form class="am-form am-form-horizontal" action="{{ route('users.store') }}" method="post">
+@include('layouts.message')
+<div class="tpl-portlet-components">
+    <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 增加管理员
+                    </div>
+                </div>
+<div class="tpl-block ">
+            <div class="am-g tpl-amazeui-form">
+           <div class="am-u-sm-12 am-u-md-9">
+            <form class="am-form am-form-horizontal" action="{{ route('users.store') }}" method="post">
           {{csrf_field()}}
             <div class="am-form-group">
               <label for="name" class="am-u-sm-3 am-form-label">用户名：</label>
@@ -63,7 +62,8 @@
               </div>
             </div>
           </form>
-        </div>
-      </div>
-       </div>
+                        </div>
+                    </div>
+                </div>
+</div>
 @endsection

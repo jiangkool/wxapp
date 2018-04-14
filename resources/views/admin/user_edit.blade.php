@@ -1,26 +1,18 @@
-@extends('layouts.admin')
-
+@extends('admin.admin')
 @section('title','管理员信息修改')
-
+@section('dataType','generalComponents')
 @section('content')
-<div class="admin-content-body">
-      <div class="am-cf am-padding am-padding-bottom-0">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">管理员信息修改</strong> / <small></small></div>
-      </div>
-
-      <hr/>
-
-      <div class="am-g">
-       @if(Session::has('message'))
-          <div class="am-alert am-alert-success" data-am-alert>
-          <button type="button" class="am-close">&times;</button>
-           <p> {{ Session::get('message') }}</p>
-            </div>
-        @else
-          @include('layouts.errors')
-        @endif
-        <div class="am-u-sm-12 am-u-md-8">
-          <form class="am-form am-form-horizontal" action="{{ route('users.update',$user->id) }}" method="post">
+@include('layouts.message')
+<div class="tpl-portlet-components">
+    <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 管理员信息修改
+                    </div>
+                </div>
+      <div class="tpl-block ">
+            <div class="am-g tpl-amazeui-form">
+           <div class="am-u-sm-12 am-u-md-9">
+           <form class="am-form am-form-horizontal" action="{{ route('users.update',$user->id) }}" method="post">
           <input type="hidden" name="_method" value="PUT">
           {{csrf_field()}}
             <div class="am-form-group">
@@ -72,7 +64,8 @@
               </div>
             </div>
           </form>
-        </div>
-      </div>
-       </div>
+                        </div>
+                    </div>
+                </div>
+</div>
 @endsection

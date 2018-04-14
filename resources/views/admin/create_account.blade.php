@@ -1,19 +1,21 @@
-@extends('layouts.admin')
-
-@section('title','增加管理员')
-
+@extends('admin.admin')
+@section('title','添加公众号')
+@section('dataType','generalComponents')
 @section('content')
-<div class="admin-content-body">
-      <div class="am-cf am-padding am-padding-bottom-0">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">添加公众号</strong>  <small></small></div>
-      </div>
+@include('layouts.message')
+<div class="tpl-portlet-components">
+    <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 添加公众号
+                    </div>
+                </div>
+<div class="tpl-block ">
 
-      <hr/>
+                    <div class="am-g tpl-amazeui-form">
 
-      <div class="am-g">
-       @include('layouts.message')
-        <div class="am-u-sm-12 am-u-md-8">
-          <form class="am-form am-form-horizontal" action="{{ route('account.store') }}" method="post">
+
+                        <div class="am-u-sm-12 am-u-md-9">
+                          <form class="am-form am-form-horizontal" action="{{ route('account.store') }}" method="post">
           {{csrf_field()}}
             <div class="am-form-group">
               <label for="account_type" class="am-u-sm-3 am-form-label">帐号类型：</label>
@@ -83,7 +85,8 @@
               </div>
             </div>
           </form>
-        </div>
-      </div>
-       </div>
+                        </div>
+                    </div>
+                </div>
+</div>
 @endsection

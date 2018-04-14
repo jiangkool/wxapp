@@ -1,40 +1,47 @@
-@extends('layouts.admin')
-
+@extends('admin.admin')
 @section('title','会员管理列表')
-
+@section('dataType','generalComponents')
 @section('content')
-  <div class="admin-content-body">
-      <div class="am-cf am-padding am-padding-bottom-0">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg"><span class="am-icon-users"></span> 会员管理列表</strong> / <small>users</small></div>
-      </div>
+            @include('layouts.message')
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 会员列表
+                    </div>
 
-      <hr>
-   @include('layouts.message')
-
-      <div class="am-g">
-        <div class="am-u-sm-12 am-u-md-6">
-          <div class="am-btn-toolbar">
-            <div class="am-btn-group am-btn-group-sm">
-              <button type="button" class="am-btn am-btn-success am-round"  onclick="window.open('{{ route('users.create') }}','_self')"><span class="am-icon-plus"></span> 新增会员</button>
-            
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="am-g">
-        <div class="am-u-sm-12">
-          <form class="am-form">
-            <table class="am-table am-table-striped am-table-hover table-main">
-              <thead>
-              <tr>
-                <th class="table-id">ID</th><th class="table-title">用户名</th><th class="table-author">Email</th><th class="table-title am-hide-sm-only">状态</th><th class="table-date am-hide-sm-only">更新时间</th><th class="table-set">操作</th>
-              </tr>
-              </thead>
-              <tbody>
-              @if(count($users)>0)
-                @foreach($users as $user)
-                <tr>
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button type="button" onclick="window.open('{{ route('users.create') }}','_self')" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button>
+                                    <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-check"><input type="checkbox" class="tpl-table-fz-check" onclick="swapCheck()"></th>
+                                            <th class="table-id">ID</th>
+                                            <th class="table-title">用户名</th>
+                                            <th class="table-title">Email</th>
+                                            <th class="table-title am-hide-sm-only">状态</th>
+                                            <th class="table-date am-hide-sm-only">更新时间</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                         @if(count($users)>0)
+                                         @foreach($users as $user)
+                                         <tr><td><input type="checkbox"  name="ids[]"></td>
                 <td>{{ $user->id }}</td>
                 <td><a href="{{ URL::route('users.edit',$user->id) }}"><b>{{ $user->name }}</b></a></td>
                 <td>{{ $user->email }}</td>
@@ -55,17 +62,20 @@
                 </td>
                 </tr>
                 @endforeach
-             @endif
-              </tbody>
-            </table>
-            <div class="am-cf">
+                @endif
+                                    </tbody>
+                                </table>
+                
+                                <hr>
+
+                            </form>
+                        </div>
+ <div class="am-cf">
             {{ $users->appends($_GET)->links() }}
             </div>
-            <hr />
-            <p>注：.....</p>
-          </form>
-        </div>
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
 
-      </div>
-    </div>
 @endsection

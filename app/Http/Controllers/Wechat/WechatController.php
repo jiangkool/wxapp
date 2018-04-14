@@ -11,7 +11,7 @@ use EasyWeChat\Message\Video;
 use EasyWeChat\Message\Voice;
 use EasyWeChat\Message\News;
 use EasyWeChat\Message\Article;
-use Account;
+use App\Models\Account;
 
 class WechatController extends Controller
 {
@@ -23,10 +23,10 @@ class WechatController extends Controller
    	 * @param string $token
    	 * @param int $id 
    	 */
-   	public function __construct($token,$id)
+   	public function __construct(Request $request)
    	{
    	  $token=$request->token;
-      $id=intval($id);
+      $id=intval($request->id);
       $account=Account::where('id',$id)->where('wechat_token',$token)->where('status',1)->first();
       $options = [
 		    'debug'  => true,
@@ -49,10 +49,9 @@ class WechatController extends Controller
    * @param  int  $id
    * @return \EasyWeChat\Support\Collection
    */
-   public function callBack(Request $request,$id)
+   public function callBack(Request $request)
     {
 
-     
 		$server = $this->app->server;
 		$server->setMessageHandler(function ($message) {
 		    switch ($message->MsgType) {
