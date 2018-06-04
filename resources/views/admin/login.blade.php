@@ -27,10 +27,6 @@
 				
 			</div>
 		</div>
-
-		<div class="login-font">
-			<i>Log In </i>
-		</div>
 		<div class="am-u-sm-10 login-am-center">
 			@include('layouts.errors')
 			<form class="am-form" method="POST" action="{{ route('checklogin') }}">

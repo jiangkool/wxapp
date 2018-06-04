@@ -65,7 +65,7 @@
                                             <td><a href="{{ URL::route('article.edit',$article->id) }}">{{ msubstr($article->title,0,20) }}</a></td>
                                             <td>{{ $article->category->category_name }}</td>
                                             <td class="am-hide-sm-only"><span class="am-badge am-radius">{{ $article->thumb!=''? '有':'无' }}</span></td>
-                                            <td class="am-hide-sm-only" style="font-size: 14px"><span class="am-badge am-badge-success am-radius">{{ $article->status==1?'已审核':'待审核' }}</span> <span class="am-badge am-badge-warning am-radius">{{ $article->attr==1?'已推荐':'' }}</span> <span class="am-badge am-badge-danger am-radius">{{ $article->attr==2?'头条':'' }}</span></td>
+                                            <td class="am-hide-sm-only" style="font-size: 14px">{!! $article->status==1?'<span class="am-badge am-badge-success am-radius">已审核</span>':'<span class="am-badge am-radius">待审核</span>' !!} <span class="am-badge am-badge-warning am-radius">{{ $article->attr==1?'已推荐':'' }}</span> <span class="am-badge am-badge-danger am-radius">{{ $article->attr==2?'头条':'' }}</span></td>
                 <td class="am-hide-sm-only">{{ $article->updated_at }}</td>
                                             <td>
                                                 <div class="am-btn-toolbar">

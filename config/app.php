@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +90,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'zh',
 
     /*
     |--------------------------------------------------------------------------
@@ -124,6 +124,14 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+
+    /**
+     * Wechat Voice Config
+     */
+    
+    'wechat_appid'=>env('WECHAT_APPID', ''),
+
+    'wechat_appsecret'=>env('WECHAT_SECRET', ''),
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

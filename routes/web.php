@@ -114,3 +114,23 @@ Route::group(['prefix' => 'wechat','middleware'=>['web'],'namespace'=>'Wechat'],
 
 });
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes For Voice
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your Voice application. 
+|
+*/
+
+Route::group(['namespace'=>'Wechat'], function() {
+
+	Route::get('/ymform','VoiceController@index');
+
+	Route::post('/ymform','VoiceController@YminfoStore')->name('storeYm');
+
+	Route::get('/voice','VoiceController@showVoicePage')->name('showVoicePage');
+
+	Route::post('/storeVoice','VoiceController@YminfoStore')->name('storeVoice');
+
+});

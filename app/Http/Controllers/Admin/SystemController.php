@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
@@ -26,24 +25,29 @@ class SystemController extends Controller
     	return view('admin.system',compact('systems'));
     }
 
+    /**
+     * Update system config.
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function update(Request $request)
     {
     	if(System::updateOrCreate(['id'=>1],request()->all())){
     		return Redirect::route('system')->with('message','系统设置已更新！');
     	}
-
-
     }
+
     /*
-    * 清除缓存
+    * Clear cache.
     *
     */
     public function clearCache()
     {
-         Artisan::call('config:clear');
+         Artisan::call('cache:clear');
          Artisan::call('route:clear');
          Artisan::call('view:clear');
-       return view('admin.clear_cache');
+
+         return view('admin.clear_cache');
     }
 
 }

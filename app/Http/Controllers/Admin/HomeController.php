@@ -7,12 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use App\Models\User;
 use Germey\Geetest\GeetestCaptcha;
 use Illuminate\Notifications\Notifiable;
+use App\Models\User;
 use App\Models\Log;
 use App\Models\Role;
-
 
 class HomeController extends Controller
 {

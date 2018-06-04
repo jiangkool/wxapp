@@ -52,7 +52,6 @@
                                                <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
                       <a class="am-btn am-btn-primary am-btn-xs" onclick="window.open('{{ route('category.edit',$category->id) }}','_self')"><span class="am-icon-pencil-square-o"></span> 编辑</a>
-                      <a class="am-btn am-btn-warning am-btn-xs am-hide-sm-only"  onclick="window.open('{{ route('category.update',['id'=>$category->id,'active'=>-1]) }} ','_self')"><span class="am-icon-copy"></span> 禁用</a>
                       <a class="am-btn am-btn-danger am-btn-xs am-hide-sm-only" onclick="window.open('{{ route('category.delete',['id'=>$category->id]) }} ','_self')"><span class="am-icon-trash-o"></span> 删除</a>
                     </div>
                   </div>

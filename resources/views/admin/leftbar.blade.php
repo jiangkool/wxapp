@@ -86,7 +86,7 @@
         <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
         </a>
 
-        <a href="table-images-list.html">
+       <!--  <a href="table-images-list.html">
         <i class="am-icon-angle-right"></i>
         <span>图片文档</span>
         <i class="tpl-left-nav-content tpl-badge-success">
@@ -104,7 +104,7 @@
         <span>文字列表</span>
 
         </a>
-        </li>
+        </li> -->
     </ul>
 </li>
 @endif
