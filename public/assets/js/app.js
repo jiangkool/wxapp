@@ -73,6 +73,18 @@ $("#del-ids").click(function(){
    window.location.href="permission/"+ids+"/delete";
 })
 
+
+//批量删除文档
+$("#del-arts").click(function(){
+    var ids='';
+    $(".am-form tbody :checked").each(function(){
+        ids=Number($(this).val())+','+ids;
+    })
+    console.log(ids);
+   window.location.href="article/"+ids+"/delete";
+})
+
+
 // 页面数据
 var pageData = {
     // ===============================================

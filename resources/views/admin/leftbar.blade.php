@@ -22,7 +22,7 @@
 @endif
  @if(array_key_exists('account.index',Session::get('admin_permissions')))
         <li class="tpl-left-nav-item">
-        <a href="javascript:;" class="nav-link tpl-left-nav-link-list  @if(request()->is('admin/article')) active @endif">
+        <a href="javascript:;" class="nav-link tpl-left-nav-link-list  @if(request()->is('admin/account')) active @endif">
 <i class="am-icon-table"></i>
 <span>公众号管理</span>
 <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
@@ -45,7 +45,7 @@
         @endif
  @if(array_key_exists('customer.index',Session::get('admin_permissions')))
 <li class="tpl-left-nav-item">
-        <a href="javascript:;" class="nav-link tpl-left-nav-link-list  @if(request()->is('admin/article')) active @endif">
+        <a href="javascript:;" class="nav-link tpl-left-nav-link-list  @if(request()->is('admin/customer')) active @endif">
 <i class="am-icon-table"></i>
 <span>访客管理</span>
 <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
@@ -86,25 +86,6 @@
         <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
         </a>
 
-       <!--  <a href="table-images-list.html">
-        <i class="am-icon-angle-right"></i>
-        <span>图片文档</span>
-        <i class="tpl-left-nav-content tpl-badge-success">
-        18
-        </i>
-
-        <a href="form-news.html">
-        <i class="am-icon-angle-right"></i>
-        <span>消息列表</span>
-        <i class="tpl-left-nav-content tpl-badge-primary">
-        5
-        </i>
-        <a href="form-news-list.html">
-        <i class="am-icon-angle-right"></i>
-        <span>文字列表</span>
-
-        </a>
-        </li> -->
     </ul>
 </li>
 @endif

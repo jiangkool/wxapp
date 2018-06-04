@@ -135,12 +135,18 @@ class ArticleController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Article  $article
+     * @param   mix $ids
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $article=Article::findOrFail($id);
-        if (Article::destroy($id)) {
+        if (!is_int($id)) {
+           $ids=explode(',', $id); array_pop($ids); 
+        }elseif(is_int($id)){
+            $ids=intval($id);
+        }
+
+        if (Article::destroy($ids)) {
             return redirect()->back()->with('message','删除成功！');
         }else{
             return redirect()->back()->withError('删除失败！');

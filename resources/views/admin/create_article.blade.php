@@ -177,7 +177,7 @@
                 $error=$('.error');
                 // 避免重复创建
                 if ( !$error.length ) {
-                    $error = $('<div class="error"></div>').appendTo( $(".tpl-form-file-img") );
+                    $error = $('<div class="error">上传失败！</div>').appendTo( $(".tpl-form-file-img") );
                 }
 
                 $error.text('上传失败');

@@ -15,7 +15,7 @@
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
                                     <button type="button" onclick="window.open('{{ route('article.create') }}','_self')" class="am-btn am-btn-default am-btn-success"><span class="am-icon-plus"></span> 新增</button>
-                                    <button type="button" class="am-btn am-btn-default am-btn-danger"><span class="am-icon-trash-o"></span> 删除</button>
+                                    <button type="button" class="am-btn am-btn-default am-btn-danger" id="del-arts"><span class="am-icon-trash-o"></span> 删除</button>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                 <table class="am-table am-table-striped am-table-hover table-main">
                                     <thead>
                                         <tr>
-                                            <th class="table-check"><input type="checkbox" class="tpl-table-fz-check"></th>
+                                            <th class="table-check"><input type="checkbox" class="tpl-table-fz-check" onclick="swapCheck()"></th>
                                             <th class="table-id">ID</th>
                                             <th class="table-title">标题</th>
                                             <th class="table-type">所属分类</th>
@@ -60,7 +60,7 @@
                                          @if(count($articles)>0)
                                         @foreach($articles as $article)
                                         <tr>
-                                            <td><input type="checkbox"></td>
+                                            <td><input type="checkbox" value="{{ $article->id }}"></td>
                                             <td>{{ $article->id }}</td>
                                             <td><a href="{{ URL::route('article.edit',$article->id) }}">{{ msubstr($article->title,0,20) }}</a></td>
                                             <td>{{ $article->category->category_name }}</td>
